@@ -15,6 +15,10 @@ enum Language
         intValue = value;
     }
 
+    public int getValue() {
+        return intValue;
+    }
+
     @Override
     public String toString() {
         return stringValue;

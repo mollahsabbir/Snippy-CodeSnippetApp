@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#9C27B0</color>
 
     <color name="consoleGreen">#7FFF00</color>
     <color name="black_BG">#000000</color>

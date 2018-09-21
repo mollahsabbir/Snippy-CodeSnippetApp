@@ -11,7 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import java.util.HashSet;
 public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Snippet> snippets = new ArrayList<Snippet>();
+
     static ArrayAdapter arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,34 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //Selection Spinner
+        Spinner selectTypeSpinner = (Spinner)findViewById(R.id.selectTypeSpinner);
+        selectTypeSpinner.setAdapter(new ArrayAdapter<Language>(this, R.layout.spinner_text_view, Language.values()));
+
+        selectTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ArrayList<Snippet> sortedSnippets = new ArrayList<Snippet>();
+                //sortedSnippets will update depending on the spinner selection
+
+                for(Snippet snippet: snippets){
+                    if(  snippet.getType().getValue() == i ){
+                        sortedSnippets.add(snippet);
+                    }
+                }
+
+                ListView snippetsListView = (ListView)  findViewById(R.id.snippetsListView);
+                arrayAdapter = new ArrayAdapter(getApplicationContext(), R.layout.snippet_list_view ,sortedSnippets);
+                snippetsListView.setAdapter(arrayAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
     public void addSnippet(View view){
@@ -113,62 +144,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void showAllSnippets(View view){
+        ArrayList<Snippet> sortedSnippets = snippets;
+        ListView snippetsListView = (ListView)  findViewById(R.id.snippetsListView);
+        arrayAdapter = new ArrayAdapter(getApplicationContext(), R.layout.snippet_list_view ,sortedSnippets);
+        snippetsListView.setAdapter(arrayAdapter);
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-SharedPreferences sharedPreferences =
-                this.getSharedPreferences("com.tritekcorp.user.snippy",
-                        Context.MODE_PRIVATE);
-
-
-        ArrayList<Snippet> snippets = new ArrayList<Snippet>();
-
-        Snippet snippet1 = new Snippet("Hello", "Hello", Language.CPlusPlus);
-        Snippet snippet2 = new Snippet("Hello2", "Hello2", Language.CSharp);
-        Snippet snippet3 = new Snippet("Hello3", "Hello3", Language.PseudoCode);
-
-        snippets.add(snippet1);
-        snippets.add(snippet2);
-        snippets.add(snippet3);
-
-        try {
-            sharedPreferences.edit().putString("snippets",ObjectSerializer.serialize(snippets)).apply();
-            //Log.i("friends",ObjectSerializer.serialize(friends));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<Snippet > newSnippets = new ArrayList<Snippet>();
-
-        try {
-            newSnippets = (ArrayList<Snippet>) ObjectSerializer.deserialize(sharedPreferences.getString("snippets",ObjectSerializer.serialize(new ArrayList<Snippet>())));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        for(Snippet snippet: newSnippets)
-        Log.i("New snippet",snippet.toString());
-
-*/
