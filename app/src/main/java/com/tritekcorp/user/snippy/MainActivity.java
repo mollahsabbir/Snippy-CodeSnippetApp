@@ -87,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void account(View view){
+        Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+
+        startActivity(intent);
+    }
+
     public void storeSnippets(){
         SharedPreferences sharedPreferences =
                 this.getSharedPreferences("com.tritekcorp.user.snippy",

@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="consoleGreen">#7FFF00</color>
+    <color name="black_BG">#000000</color>
 </resources>

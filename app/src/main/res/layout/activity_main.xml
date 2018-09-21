@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@color/black_BG"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -73,7 +73,8 @@
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/account_button" />
+            app:srcCompat="@drawable/account_button"
+            android:onClick="account"/>
 
         <ImageView
             android:id="@+id/imageView2"
