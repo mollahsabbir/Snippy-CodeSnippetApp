@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Snippy</string>
+    <string name="hint_code">import life.exe</string>
+</resources>
