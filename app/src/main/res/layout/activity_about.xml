@@ -28,23 +28,43 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/noteText"
+        android:id="@+id/aboutInfoTextView"
         android:layout_width="fill_parent"
-        android:layout_height="438dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="162dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:focusable="false"
+
         android:gravity="left"
         android:inputType="textMultiLine"
+        android:linksClickable="true"
         android:padding="15dp"
-        android:text="This is About page"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
     </EditText>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="225dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="268dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutInfoTextView"
+        app:srcCompat="@drawable/github_icon"
+        android:onClick="sendToGithubRepo"/>
 
 
 </android.support.constraint.ConstraintLayout>
